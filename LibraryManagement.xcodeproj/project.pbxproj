@@ -174,8 +174,8 @@
 		A047B0972649B48400CB2DA2 /* App */ = {
 			isa = PBXGroup;
 			children = (
-				A047B0742649B00100CB2DA2 /* SceneDelegate.swift */,
 				A047B0722649B00100CB2DA2 /* AppDelegate.swift */,
+				A047B0742649B00100CB2DA2 /* SceneDelegate.swift */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -504,7 +504,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.ersoy.LibraryManagement;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -523,7 +523,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.ersoy.LibraryManagement;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

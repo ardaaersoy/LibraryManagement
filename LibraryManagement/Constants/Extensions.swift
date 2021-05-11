@@ -10,7 +10,8 @@ import Kingfisher
 
 // MARK: -
 extension UIImageView {
-    func setKfImage(url: URL) {
+    func setKfImage(url: String?) {
+        guard let url = URL(string: url ?? "https://www.urbansplash.co.uk/images/placeholder-1-1.jpg") else { return }
         self.kf.setImage(with: url)
     }
 }

@@ -6,18 +6,17 @@
 //
 
 import UIKit
+import CoreData
 
 class DetailVC: UIViewController {
 
     // MARK: -
-    var book: Book?
+    var asset: NSManagedObject?
     
     // MARK: -
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        if let book = book {
-            print(book)
-        }
+        
     }
 }
