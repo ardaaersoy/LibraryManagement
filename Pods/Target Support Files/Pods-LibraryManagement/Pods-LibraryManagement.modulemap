@@ -1,0 +1,6 @@
+framework module Pods_LibraryManagement {
+  umbrella header "Pods-LibraryManagement-umbrella.h"
+
+  export *
+  module * { export * }
+}

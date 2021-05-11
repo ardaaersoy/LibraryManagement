@@ -1,0 +1,26 @@
+PODS:
+  - IQKeyboardManagerSwift (6.5.6)
+  - Kingfisher (5.15.6):
+    - Kingfisher/Core (= 5.15.6)
+  - Kingfisher/Core (5.15.6)
+  - SCLAlertView (0.8)
+
+DEPENDENCIES:
+  - IQKeyboardManagerSwift
+  - Kingfisher
+  - SCLAlertView
+
+SPEC REPOS:
+  trunk:
+    - IQKeyboardManagerSwift
+    - Kingfisher
+    - SCLAlertView
+
+SPEC CHECKSUMS:
+  IQKeyboardManagerSwift: c7df9d2deb356c04522f5c4b7b6e4ce4d8ed94fe
+  Kingfisher: b3554e7bf6106115b44e8795300bad580ef2fdc7
+  SCLAlertView: 6a77bb2edfc65e04dbe57725546cb4107a506b85
+
+PODFILE CHECKSUM: 5184f25e39a9f035dfa78576492b63584ea48b59
+
+COCOAPODS: 1.10.0.beta.1
