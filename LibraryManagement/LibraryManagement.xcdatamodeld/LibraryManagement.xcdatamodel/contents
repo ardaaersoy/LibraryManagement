@@ -7,14 +7,21 @@
         <attribute name="price" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="summary" optional="YES" attributeType="String"/>
         <attribute name="title" optional="YES" attributeType="String"/>
+        <relationship name="favoriteBooks" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="favoriteBooks" inverseEntity="User"/>
+    </entity>
+    <entity name="User" representedClassName="User" syncable="YES">
+        <relationship name="favoriteBooks" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Book" inverseName="favoriteBooks" inverseEntity="Book"/>
+        <relationship name="favoriteVideos" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Video" inverseName="favoriteVideos" inverseEntity="Video"/>
     </entity>
     <entity name="Video" representedClassName="Video" syncable="YES">
         <attribute name="director" optional="YES" attributeType="String"/>
         <attribute name="name" optional="YES" attributeType="String"/>
         <attribute name="url" optional="YES" attributeType="String"/>
+        <relationship name="favoriteVideos" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="favoriteVideos" inverseEntity="User"/>
     </entity>
     <elements>
-        <element name="Book" positionX="-63" positionY="-18" width="128" height="119"/>
-        <element name="Video" positionX="-54" positionY="-9" width="128" height="74"/>
+        <element name="Book" positionX="-263.2359619140625" positionY="-23.326904296875" width="128" height="134"/>
+        <element name="User" positionX="-50.51080322265625" positionY="0.6680908203125" width="128" height="59"/>
+        <element name="Video" positionX="167.3011474609375" positionY="-10.43341064453125" width="128" height="89"/>
     </elements>
 </model>

@@ -7,7 +7,6 @@
 
 import Foundation
 
-// MARK: -
 enum AlertStyle: Int {
     case success, error, notice, warning, info
 }

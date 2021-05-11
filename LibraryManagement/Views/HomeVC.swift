@@ -17,7 +17,7 @@ class HomeVC: UIViewController {
     // MARK: -
     var books = [Book](), videos = [Video]()
     var selectedAsset: NSManagedObject?
-    var favourites = [Book]()
+    var favoriteBooks = [Book](), favoriteVideos = [Video]()
     var isSelectedAssetBook = true
     
     // MARK: -
@@ -96,7 +96,7 @@ class HomeVC: UIViewController {
     // MARK: -
     private func fetchBooks() {
         Database.shared.fetchData(entity: Keys.shared.BOOK_DB) { (allBooks: [Book]?) in
-            guard let books = allBooks else { print("none"); return }
+            guard let books = allBooks else { return }
             
             if !books.isEmpty {
                 self.books = books
@@ -108,7 +108,7 @@ class HomeVC: UIViewController {
     
     private func fetchVideos() {
         Database.shared.fetchData(entity: Keys.shared.VIDEO_DB) { (allVideos: [Video]?) in
-            guard let videos = allVideos else { print("none"); return }
+            guard let videos = allVideos else { return }
             
             if !videos.isEmpty {
                 self.videos = videos
@@ -119,12 +119,17 @@ class HomeVC: UIViewController {
     }
     
     // MARK: -
-    private func handleMarkAsFavourite(favourite: NSManagedObject) {
-        //        if !favourites.contains(where: { (item) -> Bool in item.isbn == favourite.isbn }) {
-        //            favourites.append(favourite)
-        //
-        //            ShowAlert(style: .success, subTitle: "You have marked the book as favourite.")
-        //        }
+    private func handleMarkAsFavourite(favorite: NSManagedObject) {
+//        if !favourites.contains(where: { (item) -> Bool in item.isbn == favourite.isbn }) {
+//            favourites.append(favourite)
+//        }
+        
+        Database.shared.insertFavorites(book: isSelectedAssetBook ? favorite as? Book : nil, video: !isSelectedAssetBook ? favorite as? Video : nil) { isInserted in
+            print("User added a new favorite.", isInserted)
+        }
+        
+        ShowAlert(style: .success, subTitle: "You have marked the asset as favourite.")
+        MediaPlayer.shared.playSound()
     }
     
     // MARK: -
@@ -167,7 +172,7 @@ extension HomeVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        let action = UIContextualAction(style: .normal, title: "Favorite") { [weak self] (action, view, completionHandler) in self?.handleMarkAsFavourite(favourite: self!.isSelectedAssetBook ? (self?.books[indexPath.row])! : (self?.videos[indexPath.row])!)
+        let action = UIContextualAction(style: .normal, title: Keys.shared.FAVOURITE) { [weak self] (action, view, completionHandler) in self?.handleMarkAsFavourite(favorite: self!.isSelectedAssetBook ? (self?.books[indexPath.row])! : (self?.videos[indexPath.row])!)
             completionHandler(true)
         }
         action.image = UIImage.init(systemName: "star.fill")

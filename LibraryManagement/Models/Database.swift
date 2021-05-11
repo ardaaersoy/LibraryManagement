@@ -49,6 +49,23 @@ class Database {
     }
     
     // MARK: -
+    func insertFavorites(book: Book?, video: Video?, completion: @escaping (Bool) -> Void) {
+        guard let context = context else { return completion(false) }
+        guard let userObject = NSEntityDescription.insertNewObject(forEntityName: Keys.shared.USER_DB, into: context) as? User else { return completion(false) }
+        
+        if let book = book {
+            userObject.favoriteBooks = NSSet.init(array: [book])
+        }
+        
+        if let video = video {
+            userObject.favoriteVideos = NSSet.init(array: [video])
+        }
+        
+        save()
+        completion(true)
+    }
+    
+    // MARK: -
     func fetchData<T: NSManagedObject>(entity: String, completion: @escaping ([T]?) -> Void) {
         guard let context = context else { return }
         
@@ -63,6 +80,31 @@ class Database {
             print("Could not fetch data \(error), \(error.userInfo)")
             completion(nil)
         }
+    }
+    
+    // MARK: -
+    func fetchUserFavorites(subEntity: String, completion: @escaping (Bool?) -> Void) {
+        guard let context = context else { return }
+        
+//        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: Keys.shared.USER_DB)
+//
+//        do {
+//            let results = try context.fetch(fetchRequest)
+//            guard let user = resultsUser else { return }
+//
+//            guard let favoriteBooks = user.favoriteBooks else { return }
+//            for item in favoriteBooks {
+//
+//            }
+//
+//            guard let favoriteVideos = user.favoriteVideos else { return }
+//            for item in favoriteVideos {
+//                print((item as? Video)?.name)
+//            }
+//        } catch let error as NSError {
+//            print("Could not fetch data \(error), \(error.userInfo)")
+//            completion(nil)
+//        }
     }
     
     // MARK: -

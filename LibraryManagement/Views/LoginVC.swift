@@ -28,9 +28,11 @@ class LoginVC: UIViewController {
         if let username = usernameTF.text, let password = passwordTF.text {
             if username.isEmpty || password.isEmpty {
                 ShowAlert(style: .warning, subTitle: "Please, fill username and password field.")
+                MediaPlayer.shared.playSound()
             } else {
                 if username != Keys.shared.AUTH_USERNAME || password != Keys.shared.AUTH_PASSWORD {
                     ShowAlert(style: .error, subTitle: "Wrong credentials provided.")
+                    MediaPlayer.shared.playSound()
                 } else {
                     defaults.setValue(true, forKey: "isLoggedIn")
                     defaults.synchronize()
