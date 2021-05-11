@@ -16,9 +16,9 @@
 		A00D096D264AC7D000E4F4E3 /* Methods.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00D096A264AC7D000E4F4E3 /* Methods.swift */; };
 		A00D096E264AC7D000E4F4E3 /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00D096B264AC7D000E4F4E3 /* Enums.swift */; };
 		A00D0972264AC91800E4F4E3 /* BookCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00D0970264AC91800E4F4E3 /* BookCell.swift */; };
-		A00D0973264AC91800E4F4E3 /* FavoriteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00D0971264AC91800E4F4E3 /* FavoriteCell.swift */; };
 		A00D0975264AC93A00E4F4E3 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A00D0974264AC93A00E4F4E3 /* Colors.xcassets */; };
 		A00D0977264ACE8900E4F4E3 /* VideoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00D0976264ACE8900E4F4E3 /* VideoCell.swift */; };
+		A00D0979264AFCF700E4F4E3 /* AssetCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00D0978264AFCF700E4F4E3 /* AssetCell.swift */; };
 		A047B0732649B00100CB2DA2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A047B0722649B00100CB2DA2 /* AppDelegate.swift */; };
 		A047B0752649B00100CB2DA2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A047B0742649B00100CB2DA2 /* SceneDelegate.swift */; };
 		A047B07A2649B00100CB2DA2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A047B0782649B00100CB2DA2 /* Main.storyboard */; };
@@ -47,9 +47,9 @@
 		A00D096A264AC7D000E4F4E3 /* Methods.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Methods.swift; sourceTree = "<group>"; };
 		A00D096B264AC7D000E4F4E3 /* Enums.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
 		A00D0970264AC91800E4F4E3 /* BookCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookCell.swift; sourceTree = "<group>"; };
-		A00D0971264AC91800E4F4E3 /* FavoriteCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteCell.swift; sourceTree = "<group>"; };
 		A00D0974264AC93A00E4F4E3 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		A00D0976264ACE8900E4F4E3 /* VideoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoCell.swift; sourceTree = "<group>"; };
+		A00D0978264AFCF700E4F4E3 /* AssetCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetCell.swift; sourceTree = "<group>"; };
 		A047B06F2649B00100CB2DA2 /* LibraryManagement.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LibraryManagement.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A047B0722649B00100CB2DA2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A047B0742649B00100CB2DA2 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -106,7 +106,7 @@
 			children = (
 				A00D0970264AC91800E4F4E3 /* BookCell.swift */,
 				A00D0976264ACE8900E4F4E3 /* VideoCell.swift */,
-				A00D0971264AC91800E4F4E3 /* FavoriteCell.swift */,
+				A00D0978264AFCF700E4F4E3 /* AssetCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -327,6 +327,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A00D0979264AFCF700E4F4E3 /* AssetCell.swift in Sources */,
 				A047B08D2649B1EA00CB2DA2 /* Video+CoreDataClass.swift in Sources */,
 				A00D0966264AC79400E4F4E3 /* HomeVC.swift in Sources */,
 				A047B07D2649B00100CB2DA2 /* LibraryManagement.xcdatamodeld in Sources */,
@@ -336,7 +337,6 @@
 				A047B09C2649C36D00CB2DA2 /* BookModel.swift in Sources */,
 				A047B0732649B00100CB2DA2 /* AppDelegate.swift in Sources */,
 				A00D0977264ACE8900E4F4E3 /* VideoCell.swift in Sources */,
-				A00D0973264AC91800E4F4E3 /* FavoriteCell.swift in Sources */,
 				A047B0752649B00100CB2DA2 /* SceneDelegate.swift in Sources */,
 				A047B0A02649C42200CB2DA2 /* VideoModel.swift in Sources */,
 				A00D0968264AC79400E4F4E3 /* LoginVC.swift in Sources */,

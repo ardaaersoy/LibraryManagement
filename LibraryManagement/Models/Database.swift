@@ -10,7 +10,6 @@ import CoreData
 
 class Database {
     
-    // MARK: -
     static let shared = Database()
     
     // MARK: -

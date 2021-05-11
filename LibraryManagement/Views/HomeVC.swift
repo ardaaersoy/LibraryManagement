@@ -30,6 +30,7 @@ class HomeVC: UIViewController {
         tableView.reloadData()
     }
     
+    // MARK: -
     @IBAction func didAssetChanged(_ sender: UISegmentedControl) {
         isSelectedAssetBook = !isSelectedAssetBook
         tableView.reloadData()
@@ -105,7 +106,6 @@ class HomeVC: UIViewController {
         }
     }
     
-    // MARK: -
     private func fetchVideos() {
         Database.shared.fetchData(entity: Keys.shared.VIDEO_DB) { (allVideos: [Video]?) in
             guard let videos = allVideos else { print("none"); return }

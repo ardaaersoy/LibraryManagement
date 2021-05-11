@@ -7,9 +7,8 @@
 
 import Foundation
 
-// MARK: - 
+// MARK: -
 class Keys {
-    
     static let shared = Keys()
     
     lazy var BOOK_DB = "Book"

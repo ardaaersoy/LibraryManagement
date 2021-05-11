@@ -9,9 +9,7 @@
 import Foundation
 import CoreData
 
-
 extension Book {
-
     @nonobjc public class func fetchRequest() -> NSFetchRequest<Book> {
         return NSFetchRequest<Book>(entityName: Keys.shared.BOOK_DB)
     }
@@ -22,7 +20,6 @@ extension Book {
     @NSManaged public var image: String?
     @NSManaged public var price: Double
     @NSManaged public var isbn: String?
-
 }
 
 extension Book : Identifiable {
