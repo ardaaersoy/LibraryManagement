@@ -24,7 +24,10 @@ class HomeVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        fetchData()
+        fetchBooks()
+        fetchVideos()
+        
+        tableView.reloadData()
     }
     
     @IBAction func didAssetChanged(_ sender: UISegmentedControl) {
@@ -43,8 +46,20 @@ class HomeVC: UIViewController {
             do {
                 let data = try Data(contentsOf: URL(fileURLWithPath: path), options: .mappedIfSafe)
                 let books = try JSONDecoder().decode([BookModel].self, from: data)
-                  
+                
                 insertBooks(books)
+                
+            } catch let err {
+                print("err", err)
+            }
+        }
+        
+        if let path = Bundle.main.path(forResource: "VideoStore", ofType: "json") {
+            do {
+                let data = try Data(contentsOf: URL(fileURLWithPath: path), options: .mappedIfSafe)
+                let videos = try JSONDecoder().decode([VideoModel].self, from: data)
+                
+                insertVideos(videos)
                 
             } catch let err {
                 print("err", err)
@@ -62,17 +77,41 @@ class HomeVC: UIViewController {
             }
         }
         
-        fetchData()
+        fetchBooks()
+    }
+    
+    private func insertVideos(_ videos: [VideoModel]) {
+        for video in videos {
+            Database.shared.insertVideo(video: video) { isInserted in
+                if isInserted {
+                    print("\(video.name) is inserted.")
+                }
+            }
+        }
+        
+        fetchVideos()
     }
     
     // MARK: -
-    private func fetchData() {
+    private func fetchBooks() {
         Database.shared.fetchData(entity: Keys.shared.BOOK_DB) { (allBooks: [Book]?) in
             guard let books = allBooks else { print("none"); return }
             
             if !books.isEmpty {
                 self.books = books
-                self.tableView.reloadData()
+            } else {
+                self.loadData()
+            }
+        }
+    }
+    
+    // MARK: -
+    private func fetchVideos() {
+        Database.shared.fetchData(entity: Keys.shared.VIDEO_DB) { (allVideos: [Video]?) in
+            guard let videos = allVideos else { print("none"); return }
+            
+            if !videos.isEmpty {
+                self.videos = videos
             } else {
                 self.loadData()
             }
@@ -81,11 +120,11 @@ class HomeVC: UIViewController {
     
     // MARK: -
     private func handleMarkAsFavourite(favourite: NSManagedObject) {
-//        if !favourites.contains(where: { (item) -> Bool in item.isbn == favourite.isbn }) {
-//            favourites.append(favourite)
-//
-//            ShowAlert(style: .success, subTitle: "You have marked the book as favourite.")
-//        }
+        //        if !favourites.contains(where: { (item) -> Bool in item.isbn == favourite.isbn }) {
+        //            favourites.append(favourite)
+        //
+        //            ShowAlert(style: .success, subTitle: "You have marked the book as favourite.")
+        //        }
     }
     
     // MARK: -
@@ -138,12 +177,13 @@ extension HomeVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        selectedAsset = books[indexPath.row]
+        selectedAsset = isSelectedAssetBook ? books[indexPath.row] : videos[indexPath.row]
         print(selectedAsset ?? "")
+
         self.performSegue(withIdentifier: "DetailVcSegue", sender: self)
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return isSelectedAssetBook ? 180.0 : 140.0
+        return isSelectedAssetBook ? 180.0 : 130.0
     }
 }

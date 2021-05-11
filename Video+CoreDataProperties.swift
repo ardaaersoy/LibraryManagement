@@ -13,7 +13,7 @@ import CoreData
 extension Video {
 
     @nonobjc public class func fetchRequest() -> NSFetchRequest<Video> {
-        return NSFetchRequest<Video>(entityName: "Video")
+        return NSFetchRequest<Video>(entityName: Keys.shared.VIDEO_DB)
     }
 
     @NSManaged public var name: String?

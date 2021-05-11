@@ -13,7 +13,7 @@ import CoreData
 extension Book {
 
     @nonobjc public class func fetchRequest() -> NSFetchRequest<Book> {
-        return NSFetchRequest<Book>(entityName: "Book")
+        return NSFetchRequest<Book>(entityName: Keys.shared.BOOK_DB)
     }
 
     @NSManaged public var title: String?
