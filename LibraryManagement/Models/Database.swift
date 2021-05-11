@@ -29,7 +29,7 @@ class Database {
         bookObject.image = book.image
         bookObject.price = book.price
         
-        save()
+        //save()
         completion(true)
     }
     
