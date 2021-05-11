@@ -3,6 +3,7 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
@@ -93,7 +94,13 @@
                         <viewLayoutGuide key="safeArea" id="PTI-vK-ox1"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Profile" id="Adb-Yv-XJV"/>
+                    <navigationItem key="navigationItem" title="Profile" id="Adb-Yv-XJV">
+                        <barButtonItem key="rightBarButtonItem" image="lock.fill" catalog="system" style="done" id="UaG-di-BKi">
+                            <connections>
+                                <action selector="logoutBtnTapped:" destination="c5b-PN-u5D" id="y8R-y3-2Cz"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <segue destination="BYZ-38-t0r" kind="presentation" identifier="LogoutSegue" modalPresentationStyle="fullScreen" modalTransitionStyle="partialCurl" id="LWv-SC-7Xf"/>
                     </connections>
@@ -198,8 +205,9 @@
                                                             <color key="textColor" name="DarkBlue"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Url" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4eC-mt-Cn7">
+                                                        <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Url" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4eC-mt-Cn7">
                                                             <rect key="frame" x="0.0" y="108" width="374" height="52"/>
+                                                            <gestureRecognizers/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                             <color key="textColor" name="DarkGray"/>
                                                             <nil key="highlightedColor"/>
@@ -268,13 +276,76 @@
                     <view key="view" contentMode="scaleToFill" id="ViD-uP-Vl6">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="MBQ-kC-YYl">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Work" translatesAutoresizingMaskIntoConstraints="NO" id="jVU-hE-aZJ">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="394"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </imageView>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RV3-8s-t7r">
+                                        <rect key="frame" x="0.0" y="414" width="414" height="394"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                        <color key="textColor" name="DarkGray"/>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
+                                    <wkWebView hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Loj-tW-XtR">
+                                        <rect key="frame" x="0.0" y="808" width="414" height="0.0"/>
+                                        <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <wkWebViewConfiguration key="configuration">
+                                            <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                            <wkPreferences key="preferences"/>
+                                        </wkWebViewConfiguration>
+                                    </wkWebView>
+                                </subviews>
+                            </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EVO-xw-ldf">
+                                <rect key="frame" x="354" y="20" width="40" height="40"/>
+                                <color key="backgroundColor" name="Blue"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="LHq-aJ-wpy"/>
+                                    <constraint firstAttribute="width" constant="40" id="tot-TO-Ijd"/>
+                                </constraints>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="titleShadowColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <imageReference key="image" image="multiply" catalog="system" symbolScale="large"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="20"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <segue destination="0An-Sp-DmO" kind="unwind" unwindAction="unwindToHome:" id="814-N9-BDN"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="2nD-Qy-NeA"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="EVO-xw-ldf" firstAttribute="top" secondItem="2nD-Qy-NeA" secondAttribute="top" constant="20" id="Hcp-hb-5bi"/>
+                            <constraint firstItem="MBQ-kC-YYl" firstAttribute="top" secondItem="2nD-Qy-NeA" secondAttribute="top" id="SzY-8F-55D"/>
+                            <constraint firstItem="EVO-xw-ldf" firstAttribute="trailing" secondItem="2nD-Qy-NeA" secondAttribute="trailing" constant="-20" id="fxl-DS-N1k"/>
+                            <constraint firstItem="2nD-Qy-NeA" firstAttribute="trailing" secondItem="MBQ-kC-YYl" secondAttribute="trailing" id="gRa-23-52d"/>
+                            <constraint firstItem="MBQ-kC-YYl" firstAttribute="leading" secondItem="2nD-Qy-NeA" secondAttribute="leading" id="q27-5e-pXW"/>
+                            <constraint firstItem="2nD-Qy-NeA" firstAttribute="bottom" secondItem="MBQ-kC-YYl" secondAttribute="bottom" id="y3I-MA-5xk"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="assetDetailView" destination="RV3-8s-t7r" id="qTq-1z-Qyb"/>
+                        <outlet property="bookImageView" destination="jVU-hE-aZJ" id="b1v-MV-gTd"/>
+                        <outlet property="webView" destination="Loj-tW-XtR" id="YsO-D1-rk8"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bal-Wc-B6u" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="0An-Sp-DmO" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="2893" y="122"/>
+            <point key="canvasLocation" x="2892.753623188406" y="121.875"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="fXT-ay-ywU">
@@ -335,8 +406,11 @@
     </scenes>
     <resources>
         <image name="Login" width="270.5" height="308.5"/>
+        <image name="Work" width="296.5" height="283.5"/>
         <image name="house" catalog="system" width="128" height="106"/>
         <image name="house.fill" catalog="system" width="128" height="106"/>
+        <image name="lock.fill" catalog="system" width="128" height="128"/>
+        <image name="multiply" catalog="system" width="128" height="111"/>
         <image name="person.circle" catalog="system" width="128" height="121"/>
         <image name="person.circle.fill" catalog="system" width="128" height="121"/>
         <namedColor name="AccentColor">

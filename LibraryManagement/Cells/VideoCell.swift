@@ -22,4 +22,6 @@ class VideoCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
 
     }
+    
+    
 }

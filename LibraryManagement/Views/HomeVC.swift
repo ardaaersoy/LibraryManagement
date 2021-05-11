@@ -167,7 +167,7 @@ extension HomeVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        let action = UIContextualAction(style: .normal, title: "Favorite") { [weak self] (action, view, completionHandler) in self?.handleMarkAsFavourite(favourite: (self?.books[indexPath.row])!)
+        let action = UIContextualAction(style: .normal, title: "Favorite") { [weak self] (action, view, completionHandler) in self?.handleMarkAsFavourite(favourite: self!.isSelectedAssetBook ? (self?.books[indexPath.row])! : (self?.videos[indexPath.row])!)
             completionHandler(true)
         }
         action.image = UIImage.init(systemName: "star.fill")
@@ -178,8 +178,6 @@ extension HomeVC: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         selectedAsset = isSelectedAssetBook ? books[indexPath.row] : videos[indexPath.row]
-        print(selectedAsset ?? "")
-
         self.performSegue(withIdentifier: "DetailVcSegue", sender: self)
     }
     

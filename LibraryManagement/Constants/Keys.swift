@@ -7,6 +7,7 @@
 
 import Foundation
 
+// MARK: - 
 class Keys {
     
     static let shared = Keys()
