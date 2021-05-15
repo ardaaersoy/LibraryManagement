@@ -1,0 +1,77 @@
+[
+    {
+        "name": "Swift Programming Language Introduction - A Brief History",
+        "director": "Sean Allen",
+        "url": "https://www.youtube.com/watch?v=4P_ZsOqELBo"
+    },
+    {
+        "name": "Swift: Build News App (2021, Xcode 12, Swift) - iOS Development for Beginners",
+        "director": "iOS Academy",
+        "url": "https://www.youtube.com/watch?v=V2IfBdxjWs4"
+    },
+    {
+        "name": "Core data one to many relationship iOS swift 5 Hindi tutorial",
+        "director": "Code Cat",
+        "url": "https://www.youtube.com/watch?v=PlUp4tCqUN0&t=929s"
+    },
+    {
+        "name": "Introduction to Core data Swift 5 iOS Hindi tutorial for beginners",
+        "director": "Code Cat",
+        "url": "https://www.youtube.com/watch?v=wAy3S1MnKYY"
+    },
+    {
+        "name": "Dispatch Groups in Swift 5: iOS Concurrency (2020 Xcode 11, Swift 5)",
+        "director": "iOS Academy",
+        "url": "https://www.youtube.com/watch?v=4zsNgBhDs0M"
+    },
+    {
+        "name": "Swift Programming Tutorial for Beginners (Full Tutorial)",
+        "director": "Code With Chris",
+        "url": "https://www.youtube.com/watch?v=Ulp1Kimblg0&t=4804s"
+    },
+    {
+        "name": "iOS Interview Questions and Answers 2017 - Swift - Series Overview",
+        "director": "Sean Allen",
+        "url": "https://www.youtube.com/watch?v=56ZO6Gg68tw&t=505s"
+    },
+    {
+        "name": "iOS Swift Tutorial: RxSwift - A Practical Introduction",
+        "director": "Brian Advent",
+        "url": "https://www.youtube.com/watch?v=2m92mRI8l7U&t=741s"
+    },
+    {
+        "name": "Swift Delegate Pattern",
+        "director": "Mark Moeykens",
+        "url": "https://www.youtube.com/watch?v=RNtkg0az_Os"
+    },
+    {
+        "name": "Swift Delegate Protocol Pattern Tutorial - iOS Communication Patterns Part 1",
+        "director": "Sean Allen",
+        "url": "https://www.youtube.com/watch?v=DBWu6TnhLeY&t=725s"
+    },
+    {
+        "name": "AutoLayout Constraints Programmatically (Swift 5, Xcode 12, 2020) - iOS Development",
+        "director": "iOS Academy",
+        "url": "https://www.youtube.com/watch?v=HuCx6dGaY1g"
+    },
+    {
+        "name": "StoreKit - In App Purchases Swift",
+        "director": "Rebeloper",
+        "url": "https://www.youtube.com/watch?v=MP-U5gQylHc&t=800s"
+    },
+    {
+        "name": "Strong vs. Weak Swift 5: What is Weak Self (Xcode 11, 2020)",
+        "director": "iOS Academy",
+        "url": "https://www.youtube.com/watch?v=chI-B8u4MBs&t=110s"
+    },
+    {
+        "name": "Introduction to Object Oriented Programming: Classes and Protocols/Interfaces",
+        "director": "Lets Build That App",
+        "url": "https://www.youtube.com/watch?v=rKf9vs4ZoJc&t=213s"
+    },
+    {
+        "name": "10 Reasons Why I Abandoned Storyboards and Interface Builder",
+        "director": "Lets Build That App",
+        "url": "https://www.youtube.com/watch?v=g6yz5oX5iWc&t=207s"
+    }
+]

@@ -2,7 +2,7 @@
 //  User+CoreDataClass.swift
 //  LibraryManagement
 //
-//  Created by Arda ERSOY on 12.05.2021.
+//  Created by Arda Ersoy on 15.05.2021.
 //
 //
 

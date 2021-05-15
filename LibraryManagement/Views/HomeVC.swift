@@ -19,6 +19,8 @@ class HomeVC: UIViewController {
     var selectedAsset: NSManagedObject?
     var favoriteBooks = [Book](), favoriteVideos = [Video]()
     var isSelectedAssetBook = true
+    var _assetRepository: IAssetRepository = AssetRepository()
+    var _userRepository: IUserRepository = UserRepository()
     
     // MARK: -
     override func viewDidLoad() {
@@ -31,14 +33,14 @@ class HomeVC: UIViewController {
     }
     
     // MARK: -
-    @IBAction func didAssetChanged(_ sender: UISegmentedControl) {
-        isSelectedAssetBook = !isSelectedAssetBook
-        tableView.reloadData()
+    @IBAction func unwindToHome(_ unwindSegue: UIStoryboardSegue) {
+        
     }
     
     // MARK: -
-    @IBAction func unwindToHome(_ unwindSegue: UIStoryboardSegue) {
-        
+    @IBAction func didAssetChanged(_ sender: UISegmentedControl) {
+        isSelectedAssetBook = !isSelectedAssetBook
+        tableView.reloadData()
     }
     
     // MARK: -
@@ -71,11 +73,11 @@ class HomeVC: UIViewController {
     // MARK: -
     private func insertBooks(_ books: [BookModel]) {
         for book in books {
-            Database.shared.insertBook(book: book) { isInserted in
+            _assetRepository.insertBook(book: book, completion: { isInserted in
                 if isInserted {
-                    print("\(book.ISBN) is inserted.")
+                    print("\(book.title) is inserted.")
                 }
-            }
+            })
         }
         
         fetchBooks()
@@ -83,7 +85,7 @@ class HomeVC: UIViewController {
     
     private func insertVideos(_ videos: [VideoModel]) {
         for video in videos {
-            Database.shared.insertVideo(video: video) { isInserted in
+            _assetRepository.insertVideo(video: video) { isInserted in
                 if isInserted {
                     print("\(video.name) is inserted.")
                 }
@@ -95,8 +97,8 @@ class HomeVC: UIViewController {
     
     // MARK: -
     private func fetchBooks() {
-        Database.shared.fetchData(entity: Keys.shared.BOOK_DB) { (allBooks: [Book]?) in
-            guard let books = allBooks else { return }
+        _assetRepository.fetchAll(entity: Keys.shared.BOOK_DB) { (allBooks: [Book]?) in
+            guard let books = allBooks else { print("ee"); return }
             
             if !books.isEmpty {
                 self.books = books
@@ -107,7 +109,7 @@ class HomeVC: UIViewController {
     }
     
     private func fetchVideos() {
-        Database.shared.fetchData(entity: Keys.shared.VIDEO_DB) { (allVideos: [Video]?) in
+        _assetRepository.fetchAll(entity: Keys.shared.VIDEO_DB) { (allVideos: [Video]?) in
             guard let videos = allVideos else { return }
             
             if !videos.isEmpty {
@@ -124,8 +126,14 @@ class HomeVC: UIViewController {
 //            favourites.append(favourite)
 //        }
         
-        Database.shared.insertFavorites(book: isSelectedAssetBook ? favorite as? Book : nil, video: !isSelectedAssetBook ? favorite as? Video : nil) { isInserted in
-            print("User added a new favorite.", isInserted)
+//        AssetRepository.shared.insertFavorites(book: isSelectedAssetBook ? favorite as? Book : nil, video: !isSelectedAssetBook ? favorite as? Video : nil) { isInserted in
+//            print("User added a new favorite.", isInserted)
+//        }
+        
+        _userRepository.insertFavorites(book: isSelectedAssetBook ? (favorite as? Book) : nil, video: !isSelectedAssetBook ? (favorite as? Video) : nil) { isInserted in
+            if isInserted {
+                print("User added a new favorite.")
+            }
         }
         
         ShowAlert(style: .success, subTitle: "You have marked the asset as favourite.")

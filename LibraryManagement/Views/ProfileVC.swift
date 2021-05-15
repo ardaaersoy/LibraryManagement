@@ -15,6 +15,7 @@ class ProfileVC: UIViewController {
     
     // MARK: -
     var favoriteBooks = [Book](), favoriteVideos = [Video]()
+    var _userRepository: IUserRepository = UserRepository()
     
     // MARK: -
     override func viewDidLoad() {
@@ -32,7 +33,12 @@ class ProfileVC: UIViewController {
     
     // MARK: -
     private func fetchFavorites() {
-     
+        _userRepository.fetchFavorites(completion: { books, videos in
+            if let books = books, let videos = videos {
+                self.favoriteBooks = books
+                self.favoriteVideos = videos
+            }
+        })
     }
     
     // MARK: -
