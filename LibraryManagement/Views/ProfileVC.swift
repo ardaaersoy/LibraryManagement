@@ -16,6 +16,7 @@ class ProfileVC: UIViewController {
     // MARK: - Define variables
     var favoriteBooks = [Book](), favoriteVideos = [Video]()
     var _userRepository: IUserRepository = UserRepository()
+    var selectedAsset: NSManagedObject?
     
     // MARK: - Main
     override func viewDidLoad() {
@@ -31,13 +32,19 @@ class ProfileVC: UIViewController {
         tableView.reloadData()
     }
     
+    // MARK: - Prepare segue, pass asset details for detailVC to display
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "DetailVcSegue" {
+            guard let vc = segue.destination as? DetailVC else { return }
+            vc.asset = selectedAsset
+        }
+    }
+    
     // MARK: - Fetch user favourites
     private func fetchFavorites() {
         _userRepository.fetchFavorites(completion: { books, videos in
-            if let books = books, let videos = videos {
-                self.favoriteBooks = books
-                self.favoriteVideos = videos
-            }
+            self.favoriteBooks = books
+            self.favoriteVideos = videos
         })
     }
     
@@ -85,7 +92,12 @@ extension ProfileVC: UITableViewDelegate, UITableViewDataSource {
         return cell
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        selectedAsset = indexPath.section == 0 ? favoriteBooks[indexPath.row] : favoriteVideos[indexPath.row]
+        self.performSegue(withIdentifier: "DetailVcSegue", sender: self)
+    }
+    
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return section == 0 ? "Books" : "Videos"
+        return section == 0 ? "Favorite Books" : "Favorite Videos"
     }
 }

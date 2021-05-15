@@ -165,6 +165,7 @@
                     <connections>
                         <outlet property="tableView" destination="XZT-NN-3fv" id="S9p-ka-rXA"/>
                         <segue destination="BYZ-38-t0r" kind="presentation" identifier="LogoutSegue" modalPresentationStyle="fullScreen" modalTransitionStyle="partialCurl" id="LWv-SC-7Xf"/>
+                        <segue destination="aqU-sk-PAf" kind="presentation" identifier="DetailVcSegue" id="cJv-i9-OrQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wh4-bG-0Ur" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -382,7 +383,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <segue destination="0An-Sp-DmO" kind="unwind" unwindAction="unwindToHome:" id="814-N9-BDN"/>
+                                    <action selector="didCloseTapped:" destination="aqU-sk-PAf" eventType="touchUpInside" id="Asl-GP-qoq"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -404,9 +405,8 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bal-Wc-B6u" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-                <exit id="0An-Sp-DmO" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="2892.753623188406" y="121.875"/>
+            <point key="canvasLocation" x="2952" y="122"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="fXT-ay-ywU">
@@ -466,6 +466,9 @@
             <point key="canvasLocation" x="1451" y="459"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="Fgf-RK-Xx2"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="Login" width="270.5" height="308.5"/>
         <image name="house" catalog="system" width="128" height="106"/>

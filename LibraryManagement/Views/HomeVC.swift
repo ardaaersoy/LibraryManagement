@@ -32,15 +32,11 @@ class HomeVC: UIViewController {
         tableView.reloadData()
     }
     
-    // MARK: - Unwind segue to pop vc
-    @IBAction func unwindToHome(_ unwindSegue: UIStoryboardSegue) {
-        
-    }
-    
     // MARK: - Handle segmented control change
     @IBAction func didAssetChanged(_ sender: UISegmentedControl) {
         isSelectedAssetBook = !isSelectedAssetBook
         tableView.reloadData()
+        tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: true)
     }
     
     // MARK: - Load data if there is not existing assets in core data
@@ -122,18 +118,14 @@ class HomeVC: UIViewController {
     
     // MARK: - Handle favorite button click, to add a new favorite asset to user
     private func handleMarkAsFavourite(favorite: NSManagedObject) {
-//        if !favourites.contains(where: { (item) -> Bool in item.isbn == favourite.isbn }) {
-//            favourites.append(favourite)
-//        }
-
-        _userRepository.insertFavorites(book: isSelectedAssetBook ? (favorite as? Book) : nil, video: !isSelectedAssetBook ? (favorite as? Video) : nil) { isInserted in
-            if isInserted {
-                print("User added a new favorite.")
+        _userRepository.insertFavorites(asset: favorite) { isAddedToFavorites in
+            if isAddedToFavorites {
+                ShowAlert(style: .success, subTitle: "You have marked the asset as favourite.")
+                MediaPlayer.shared.playSound()
+            } else {
+                ShowAlert(style: .warning, subTitle: "You have already marked this asset as favourite.")
             }
         }
-        
-        ShowAlert(style: .success, subTitle: "You have marked the asset as favourite.")
-        MediaPlayer.shared.playSound()
     }
     
     // MARK: - Prepare segue, pass asset details for detailVC to display

@@ -2,7 +2,7 @@
 //  Book+CoreDataProperties.swift
 //  LibraryManagement
 //
-//  Created by Arda ERSOY on 12.05.2021.
+//  Created by Arda Ersoy on 15.05.2021.
 //
 //
 
@@ -13,7 +13,7 @@ import CoreData
 extension Book {
 
     @nonobjc public class func fetchRequest() -> NSFetchRequest<Book> {
-        return NSFetchRequest<Book>(entityName: Keys.shared.BOOK_DB)
+        return NSFetchRequest<Book>(entityName: "Book")
     }
 
     @NSManaged public var author: String?
@@ -22,6 +22,7 @@ extension Book {
     @NSManaged public var price: Double
     @NSManaged public var summary: String?
     @NSManaged public var title: String?
+    @NSManaged public var favoriteBooks: User?
 
 }
 

@@ -22,8 +22,8 @@
         <relationship name="favoriteVideos" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="favoriteVideos" inverseEntity="User"/>
     </entity>
     <elements>
-        <element name="Book" positionX="-263.2359619140625" positionY="-23.326904296875" width="128" height="134"/>
-        <element name="User" positionX="-50.51080322265625" positionY="0.6680908203125" width="128" height="89"/>
-        <element name="Video" positionX="167.3011474609375" positionY="-10.43341064453125" width="128" height="89"/>
+        <element name="Book" positionX="-266.6815185546875" positionY="13.96011352539062" width="128" height="148"/>
+        <element name="User" positionX="-75.33282470703125" positionY="-162.299072265625" width="128" height="103"/>
+        <element name="Video" positionX="-23.8448486328125" positionY="211.9706420898438" width="121.1258544921875" height="103"/>
     </elements>
 </model>

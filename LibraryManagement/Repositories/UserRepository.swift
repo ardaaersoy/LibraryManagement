@@ -10,8 +10,8 @@ import CoreData
 protocol IUserRepository {
     func insert(username: String, password: String, completion: @escaping (Bool) -> Void)
     func fetch(username: String, password: String, completion: @escaping (User?) -> Void)
-    func insertFavorites(book: Book?, video: Video?, completion: @escaping (Bool) -> Void)
-    func fetchFavorites(completion: @escaping ([Book]?, [Video]?) -> Void)
+    func insertFavorites(asset: NSManagedObject, completion: @escaping (Bool) -> Void)
+    func fetchFavorites(completion: @escaping ([Book], [Video]) -> Void)
 }
 
 class UserRepository: BaseRepository, IUserRepository {
@@ -48,7 +48,7 @@ class UserRepository: BaseRepository, IUserRepository {
     }
     
     // MARK: - Insert new favorite data to specified user
-    func insertFavorites(book: Book?, video: Video?, completion: @escaping (Bool) -> Void) {
+    func insertFavorites(asset: NSManagedObject, completion: @escaping (Bool) -> Void) {
         guard let context = context else { return completion(false) }
         
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: Keys.shared.USER_DB)
@@ -58,13 +58,31 @@ class UserRepository: BaseRepository, IUserRepository {
             let results = try context.fetch(request)
             guard let users = results as? [User] else { return completion(false) }
             
-            if let book = book, let video = video {
-                users.first?.favoriteBooks = NSSet.init(array: [book])
-                users.first?.favoriteVideos = NSSet.init(array: [video])
+            if asset is Book {
+                if let favoriteBooks = users.first?.favoriteBooks {
+                    if !favoriteBooks.contains(where: { item in (item as? Book)?.isbn == (asset as? Book)?.isbn }) {
+                        users.first?.addToFavoriteBooks((asset as? Book)!)
+                        
+                        save()
+                        completion(true)
+                    } else {
+                        completion(false)
+                    }
+                }
             }
             
-            completion(true)
-            save()
+            if asset is Video {
+                if let favoriteVideos = users.first?.favoriteVideos {
+                    if !favoriteVideos.contains(where: { item in (item as? Video)?.url == (asset as? Video)?.url }) {
+                        users.first?.addToFavoriteVideos((asset as? Video)!)
+                        
+                        save()
+                        completion(true)
+                    } else {
+                        completion(false)
+                    }
+                }
+            }
             
         } catch let error as NSError {
             print("Could not update data \(error), \(error.userInfo)")
@@ -73,33 +91,35 @@ class UserRepository: BaseRepository, IUserRepository {
     }
     
     // MARK: - Fetch user favorites if exist
-    func fetchFavorites(completion: @escaping ([Book]?, [Video]?) -> Void) {
-        guard let context = context else { return }
-       
+    func fetchFavorites(completion: @escaping ([Book], [Video]) -> Void) {
+        guard let context = context else { return completion([], []) }
+        
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: Keys.shared.USER_DB)
         request.predicate = NSPredicate(format: "username = %@", Keys.shared.AUTH_USERNAME)
         
         do {
             let results = try context.fetch(request)
-            guard let users = results as? [User] else { return completion(nil, nil) }
+            guard let users = results as? [User] else { return completion([], []) }
             
-            if let favoriteBooks = users.first?.favoriteBooks {
+            if let favoriteBooks = users.first?.favoriteBooks, let favoriteVideos = users.first?.favoriteVideos {
+                var books = [Book]()
                 for book in favoriteBooks {
-                    print(book)
+                    guard let book = book as? Book else { return completion([], []) }
+                    books.append(book)
                 }
-            }
-            
-            if let favoriteVideos = users.first?.favoriteVideos {
+                
+                var videos = [Video]()
                 for video in favoriteVideos {
-                    print(video)
+                    guard let video = video as? Video else { return completion([], []) }
+                    videos.append(video)
                 }
+                
+                completion(books, videos)
             }
-            
-            print("end")
             
         } catch let error as NSError {
             print("Could not fetch data \(error), \(error.userInfo)")
-            completion(nil, nil)
+            completion([], [])
         }
     }
 }

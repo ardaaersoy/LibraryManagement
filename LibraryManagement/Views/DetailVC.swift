@@ -62,6 +62,11 @@ class DetailVC: UIViewController {
         webView.navigationDelegate = self
         webView.load(URLRequest(url: URL(string: url)!))
     }
+    
+    // MARK: - Handle close this view
+    @IBAction func didCloseTapped(_ sender: UIButton) {
+        self.dismiss(animated: true, completion: nil)
+    }
 }
 
 // MARK: - Webkit delegate extension
