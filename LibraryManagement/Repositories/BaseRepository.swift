@@ -10,14 +10,14 @@ import CoreData
 
 class BaseRepository {
     
-    // MARK: -
+    // MARK: - Managed object context
     var context: NSManagedObjectContext? {
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return nil }
         let managedContext = appDelegate.persistentContainer.viewContext
         return managedContext
     }
     
-    // MARK: -
+    // MARK: - Save current context
     func save() {
         guard let context = context else { return }
         

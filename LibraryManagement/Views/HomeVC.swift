@@ -10,11 +10,11 @@ import CoreData
 
 class HomeVC: UIViewController {
     
-    // MARK: -
+    // MARK: - Required outlets
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var assetSegmentedControl: UISegmentedControl!
     
-    // MARK: -
+    // MARK: - Define variables
     var books = [Book](), videos = [Video]()
     var selectedAsset: NSManagedObject?
     var favoriteBooks = [Book](), favoriteVideos = [Video]()
@@ -22,7 +22,7 @@ class HomeVC: UIViewController {
     var _assetRepository: IAssetRepository = AssetRepository()
     var _userRepository: IUserRepository = UserRepository()
     
-    // MARK: -
+    // MARK: - Main
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -32,18 +32,18 @@ class HomeVC: UIViewController {
         tableView.reloadData()
     }
     
-    // MARK: -
+    // MARK: - Unwind segue to pop vc
     @IBAction func unwindToHome(_ unwindSegue: UIStoryboardSegue) {
         
     }
     
-    // MARK: -
+    // MARK: - Handle segmented control change
     @IBAction func didAssetChanged(_ sender: UISegmentedControl) {
         isSelectedAssetBook = !isSelectedAssetBook
         tableView.reloadData()
     }
     
-    // MARK: -
+    // MARK: - Load data if there is not existing assets in core data
     private func loadData() {
         if let path = Bundle.main.path(forResource: "BookStore", ofType: "json") {
             do {
@@ -70,7 +70,7 @@ class HomeVC: UIViewController {
         }
     }
     
-    // MARK: -
+    // MARK: - Insert assets that are parsed from json files
     private func insertBooks(_ books: [BookModel]) {
         for book in books {
             _assetRepository.insertBook(book: book, completion: { isInserted in
@@ -95,7 +95,7 @@ class HomeVC: UIViewController {
         fetchVideos()
     }
     
-    // MARK: -
+    // MARK: - Fetch all assets to display
     private func fetchBooks() {
         _assetRepository.fetchAll(entity: Keys.shared.BOOK_DB) { (allBooks: [Book]?) in
             guard let books = allBooks else { print("ee"); return }
@@ -120,16 +120,12 @@ class HomeVC: UIViewController {
         }
     }
     
-    // MARK: -
+    // MARK: - Handle favorite button click, to add a new favorite asset to user
     private func handleMarkAsFavourite(favorite: NSManagedObject) {
 //        if !favourites.contains(where: { (item) -> Bool in item.isbn == favourite.isbn }) {
 //            favourites.append(favourite)
 //        }
-        
-//        AssetRepository.shared.insertFavorites(book: isSelectedAssetBook ? favorite as? Book : nil, video: !isSelectedAssetBook ? favorite as? Video : nil) { isInserted in
-//            print("User added a new favorite.", isInserted)
-//        }
-        
+
         _userRepository.insertFavorites(book: isSelectedAssetBook ? (favorite as? Book) : nil, video: !isSelectedAssetBook ? (favorite as? Video) : nil) { isInserted in
             if isInserted {
                 print("User added a new favorite.")
@@ -140,7 +136,7 @@ class HomeVC: UIViewController {
         MediaPlayer.shared.playSound()
     }
     
-    // MARK: -
+    // MARK: - Prepare segue, pass asset details for detailVC to display
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "DetailVcSegue" {
             guard let vc = segue.destination as? DetailVC else { return }
@@ -149,7 +145,7 @@ class HomeVC: UIViewController {
     }
 }
 
-// MARK: -
+// MARK: - Tableview extension for displaying all books and videos
 extension HomeVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return isSelectedAssetBook ? books.count : videos.count

@@ -11,22 +11,22 @@ import WebKit
 
 class DetailVC: UIViewController {
     
-    // MARK: -
+    // MARK: - Required outlets
     @IBOutlet weak var bookImageView: UIImageView!
     @IBOutlet weak var assetDetailView: UITextView!
     @IBOutlet weak var webView: WKWebView!
     
-    // MARK: -
+    // MARK: - Define variables
     var asset: NSManagedObject?
     
-    // MARK: -
+    // MARK: - Main
     override func viewDidLoad() {
         super.viewDidLoad()
         
         configureElements()
     }
     
-    // MARK: -
+    // MARK: - Configure ui elements according to asset object type
     private func configureElements() {
         assetDetailView.textContainerInset = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 20)
         
@@ -44,27 +44,27 @@ class DetailVC: UIViewController {
         }
     }
     
-    //MARK: -
+    //MARK: - Set book information that passed from other controller
     private func setBookInfo(book: Book) {
         bookImageView.setKfImage(url: book.image)
         assetDetailView.text = "\(book.title ?? "") by \(book.author ?? "")\n\n\(book.summary ?? "")"
     }
     
-    //MARK: -
+    //MARK: - Update ui method
     private func updateUI(hidden: Bool) {
         bookImageView.isHidden = hidden
         assetDetailView.isHidden = hidden
         webView.isHidden = !hidden
     }
     
-    //MARK: -
+    //MARK: - Load webview from video url
     private func loadWebView(url: String) {
         webView.navigationDelegate = self
         webView.load(URLRequest(url: URL(string: url)!))
     }
 }
 
-// MARK: -
+// MARK: - Webkit delegate extension
 extension DetailVC: WKNavigationDelegate {
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
         webView.isHidden = false

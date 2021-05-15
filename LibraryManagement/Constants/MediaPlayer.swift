@@ -10,11 +10,11 @@ import AVFoundation
 
 class MediaPlayer {
     
-    // MARK: -
+    // MARK: - Define variables
     static let shared = MediaPlayer()
     private var player: AVAudioPlayer!
     
-    // MARK: -
+    // MARK: - Method for playing specified sound
     func playSound() {
         let soundUrl = Bundle.main.url(forResource: "note1", withExtension: "wav")
         

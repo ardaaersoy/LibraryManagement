@@ -16,7 +16,7 @@ protocol IUserRepository {
 
 class UserRepository: BaseRepository, IUserRepository {
     
-    // MARK: -
+    // MARK: - Insert a user to database
     func insert(username: String, password: String, completion: @escaping (Bool) -> Void) {
         guard let context = context else { return completion(false) }
         guard let userObject = NSEntityDescription.insertNewObject(forEntityName: Keys.shared.USER_DB, into: context) as? User else { return completion(false) }
@@ -28,7 +28,7 @@ class UserRepository: BaseRepository, IUserRepository {
         completion(true)
     }
     
-    // MARK: -
+    // MARK: - Fetch existing user from database
     func fetch(username: String, password: String, completion: @escaping (User?) -> Void) {
         guard let context = context else { return completion(nil) }
         
@@ -47,7 +47,7 @@ class UserRepository: BaseRepository, IUserRepository {
         }
     }
     
-    // MARK: -
+    // MARK: - Insert new favorite data to specified user
     func insertFavorites(book: Book?, video: Video?, completion: @escaping (Bool) -> Void) {
         guard let context = context else { return completion(false) }
         
@@ -72,7 +72,7 @@ class UserRepository: BaseRepository, IUserRepository {
         }
     }
     
-    // MARK: -
+    // MARK: - Fetch user favorites if exist
     func fetchFavorites(completion: @escaping ([Book]?, [Video]?) -> Void) {
         guard let context = context else { return }
        

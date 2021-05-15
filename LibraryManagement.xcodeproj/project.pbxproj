@@ -14,7 +14,6 @@
 		A00D0968264AC79400E4F4E3 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00D0964264AC79400E4F4E3 /* LoginVC.swift */; };
 		A00D096C264AC7D000E4F4E3 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00D0969264AC7D000E4F4E3 /* Extensions.swift */; };
 		A00D096D264AC7D000E4F4E3 /* SCLAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00D096A264AC7D000E4F4E3 /* SCLAlert.swift */; };
-		A00D096E264AC7D000E4F4E3 /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00D096B264AC7D000E4F4E3 /* Enums.swift */; };
 		A00D0972264AC91800E4F4E3 /* BookCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00D0970264AC91800E4F4E3 /* BookCell.swift */; };
 		A00D0975264AC93A00E4F4E3 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A00D0974264AC93A00E4F4E3 /* Colors.xcassets */; };
 		A00D0977264ACE8900E4F4E3 /* VideoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00D0976264ACE8900E4F4E3 /* VideoCell.swift */; };
@@ -51,7 +50,6 @@
 		A00D0964264AC79400E4F4E3 /* LoginVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
 		A00D0969264AC7D000E4F4E3 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		A00D096A264AC7D000E4F4E3 /* SCLAlert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCLAlert.swift; sourceTree = "<group>"; };
-		A00D096B264AC7D000E4F4E3 /* Enums.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
 		A00D0970264AC91800E4F4E3 /* BookCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookCell.swift; sourceTree = "<group>"; };
 		A00D0974264AC93A00E4F4E3 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		A00D0976264ACE8900E4F4E3 /* VideoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoCell.swift; sourceTree = "<group>"; };
@@ -170,7 +168,6 @@
 			isa = PBXGroup;
 			children = (
 				A047B0932649B42D00CB2DA2 /* Keys.swift */,
-				A00D096B264AC7D000E4F4E3 /* Enums.swift */,
 				A00D0969264AC7D000E4F4E3 /* Extensions.swift */,
 				A00D096A264AC7D000E4F4E3 /* SCLAlert.swift */,
 				A00D098C264B3A0C00E4F4E3 /* MediaPlayer.swift */,
@@ -370,7 +367,6 @@
 				A047B0A02649C42200CB2DA2 /* VideoModel.swift in Sources */,
 				A00D0968264AC79400E4F4E3 /* LoginVC.swift in Sources */,
 				A00D0965264AC79400E4F4E3 /* ProfileVC.swift in Sources */,
-				A00D096E264AC7D000E4F4E3 /* Enums.swift in Sources */,
 				A00D096C264AC7D000E4F4E3 /* Extensions.swift in Sources */,
 				A00D098D264B3A0C00E4F4E3 /* MediaPlayer.swift in Sources */,
 				A047B0922649B35400CB2DA2 /* AssetRepository.swift in Sources */,

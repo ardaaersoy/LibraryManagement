@@ -10,20 +10,20 @@ import CoreData
 
 class ProfileVC: UIViewController {
     
-    // MARK: -
+    // MARK: - Required outlets
     @IBOutlet weak var tableView: UITableView!
     
-    // MARK: -
+    // MARK: - Define variables
     var favoriteBooks = [Book](), favoriteVideos = [Video]()
     var _userRepository: IUserRepository = UserRepository()
     
-    // MARK: -
+    // MARK: - Main
     override func viewDidLoad() {
         super.viewDidLoad()
         
     }
     
-    // MARK: -
+    // MARK: - Fetch user favorites by overriding viewDidAppear method
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
         
@@ -31,7 +31,7 @@ class ProfileVC: UIViewController {
         tableView.reloadData()
     }
     
-    // MARK: -
+    // MARK: - Fetch user favourites
     private func fetchFavorites() {
         _userRepository.fetchFavorites(completion: { books, videos in
             if let books = books, let videos = videos {
@@ -41,7 +41,7 @@ class ProfileVC: UIViewController {
         })
     }
     
-    // MARK: -
+    // MARK: - Handle logout button click and perform logout operation
     @IBAction func logoutBtnTapped(_ sender: UIBarButtonItem) {
         ShowAlertWithAction(subTitle: "Do you really want to log out?") {
             let defaults = UserDefaults.standard
@@ -55,7 +55,7 @@ class ProfileVC: UIViewController {
     }
 }
 
-// MARK: -
+// MARK: - Tableview extensino for displaying user favorites
 extension ProfileVC: UITableViewDelegate, UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         return 2

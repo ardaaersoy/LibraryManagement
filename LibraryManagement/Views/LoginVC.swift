@@ -9,12 +9,12 @@ import UIKit
 
 class LoginVC: UIViewController {
 
-    // MARK: -
+    // MARK: - Required outlets
     @IBOutlet weak var usernameTF: UITextField!
     @IBOutlet weak var passwordTF: UITextField!
     @IBOutlet weak var loginBTN: UIButton!
     
-    // MARK: -
+    // MARK: - Define variables
     let defaults = UserDefaults.standard
     var _userRepository: IUserRepository = UserRepository()
     
@@ -35,7 +35,7 @@ class LoginVC: UIViewController {
         })
     }
     
-    // MARK: -
+    // MARK: - Handle login button click, check user credentials
     @IBAction func loginBtnTapped(_ sender: UIButton) {
         if let username = usernameTF.text, let password = passwordTF.text {
             if username.isEmpty || password.isEmpty {

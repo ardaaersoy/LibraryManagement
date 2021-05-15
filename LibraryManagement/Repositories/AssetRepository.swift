@@ -15,7 +15,7 @@ protocol IAssetRepository {
 
 class AssetRepository: BaseRepository, IAssetRepository {
     
-    // MARK: -
+    // MARK: - Insert new book to database
     func insertBook(book: BookModel, completion: @escaping (Bool) -> Void) {
         guard let context = context else { return completion(false) }
         guard let bookObject = NSEntityDescription.insertNewObject(forEntityName: Keys.shared.BOOK_DB, into: context) as? Book else { return completion(false) }
@@ -31,7 +31,7 @@ class AssetRepository: BaseRepository, IAssetRepository {
         completion(true)
     }
     
-    // MARK: -
+    // MARK: - Insert new video to database
     func insertVideo(video: VideoModel, completion: @escaping (Bool) -> Void) {
         guard let context = context else { return completion(false) }
         guard let videoObject = NSEntityDescription.insertNewObject(forEntityName: Keys.shared.VIDEO_DB, into: context) as? Video else { return completion(false) }
@@ -44,7 +44,7 @@ class AssetRepository: BaseRepository, IAssetRepository {
         completion(true)
     }
     
-    // MARK: -
+    // MARK: - Generic method to fetch all assets existing in database
     func fetchAll<T: NSManagedObject>(entity: String, completion: @escaping ([T]?) -> Void) {
         guard let context = context else { return completion(nil) }
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: entity)
@@ -60,7 +60,7 @@ class AssetRepository: BaseRepository, IAssetRepository {
         }
     }
     
-    // MARK: -
+    // MARK: - Delete specified managed object from database
     func delete(object: Book) {
         guard let context = context else { return }
         

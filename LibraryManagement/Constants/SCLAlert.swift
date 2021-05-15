@@ -8,7 +8,12 @@
 import Foundation
 import SCLAlertView
 
-// MARK: - 
+// MARK: - Alert enum for different types
+enum AlertStyle: Int {
+    case success, error, notice, warning, info
+}
+
+// MARK: - Alert methods for basic and with action
 func ShowAlert(style: AlertStyle, subTitle: String) {
     switch style {
     case .success: SCLAlertView().showSuccess("Success", subTitle: subTitle)
