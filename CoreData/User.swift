@@ -1,5 +1,5 @@
 //
-//  User+CoreDataClass.swift
+//  User.swift
 //  LibraryManagement
 //
 //  Created by Arda Ersoy on 15.05.2021.

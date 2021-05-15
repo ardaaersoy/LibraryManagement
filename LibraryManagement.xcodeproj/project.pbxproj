@@ -34,11 +34,11 @@
 		FF5EF5D32650038000304F63 /* VideoStore.json in Resources */ = {isa = PBXBuildFile; fileRef = FF5EF5D22650038000304F63 /* VideoStore.json */; };
 		FF5EF5D5265007F200304F63 /* UserRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5EF5D4265007F200304F63 /* UserRepository.swift */; };
 		FF5EF5D826500ADA00304F63 /* BaseRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5EF5D726500ADA00304F63 /* BaseRepository.swift */; };
-		FF5EF5FB265021DB00304F63 /* Book+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5EF5F5265021DB00304F63 /* Book+CoreDataClass.swift */; };
+		FF5EF5FB265021DB00304F63 /* Book.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5EF5F5265021DB00304F63 /* Book.swift */; };
 		FF5EF5FC265021DB00304F63 /* Book+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5EF5F6265021DB00304F63 /* Book+CoreDataProperties.swift */; };
-		FF5EF5FD265021DB00304F63 /* Video+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5EF5F7265021DB00304F63 /* Video+CoreDataClass.swift */; };
+		FF5EF5FD265021DB00304F63 /* Video.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5EF5F7265021DB00304F63 /* Video.swift */; };
 		FF5EF5FE265021DB00304F63 /* Video+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5EF5F8265021DB00304F63 /* Video+CoreDataProperties.swift */; };
-		FF5EF60326502CE800304F63 /* User+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5EF60126502CE800304F63 /* User+CoreDataClass.swift */; };
+		FF5EF60326502CE800304F63 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5EF60126502CE800304F63 /* User.swift */; };
 		FF5EF60426502CE800304F63 /* User+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5EF60226502CE800304F63 /* User+CoreDataProperties.swift */; };
 /* End PBXBuildFile section */
 
@@ -74,11 +74,11 @@
 		FF5EF5D22650038000304F63 /* VideoStore.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = VideoStore.json; sourceTree = "<group>"; };
 		FF5EF5D4265007F200304F63 /* UserRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRepository.swift; sourceTree = "<group>"; };
 		FF5EF5D726500ADA00304F63 /* BaseRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseRepository.swift; sourceTree = "<group>"; };
-		FF5EF5F5265021DB00304F63 /* Book+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Book+CoreDataClass.swift"; sourceTree = "<group>"; };
+		FF5EF5F5265021DB00304F63 /* Book.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Book.swift; sourceTree = "<group>"; };
 		FF5EF5F6265021DB00304F63 /* Book+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Book+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		FF5EF5F7265021DB00304F63 /* Video+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Video+CoreDataClass.swift"; sourceTree = "<group>"; };
+		FF5EF5F7265021DB00304F63 /* Video.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Video.swift; sourceTree = "<group>"; };
 		FF5EF5F8265021DB00304F63 /* Video+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Video+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		FF5EF60126502CE800304F63 /* User+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User+CoreDataClass.swift"; sourceTree = "<group>"; };
+		FF5EF60126502CE800304F63 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		FF5EF60226502CE800304F63 /* User+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User+CoreDataProperties.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -124,12 +124,7 @@
 		A047B0662649B00100CB2DA2 = {
 			isa = PBXGroup;
 			children = (
-				FF5EF60126502CE800304F63 /* User+CoreDataClass.swift */,
-				FF5EF60226502CE800304F63 /* User+CoreDataProperties.swift */,
-				FF5EF5F5265021DB00304F63 /* Book+CoreDataClass.swift */,
-				FF5EF5F6265021DB00304F63 /* Book+CoreDataProperties.swift */,
-				FF5EF5F7265021DB00304F63 /* Video+CoreDataClass.swift */,
-				FF5EF5F8265021DB00304F63 /* Video+CoreDataProperties.swift */,
+				FF5EF60526503CBA00304F63 /* CoreData */,
 				A047B0712649B00100CB2DA2 /* LibraryManagement */,
 				A047B0702649B00100CB2DA2 /* Products */,
 				371CC4B44C78EF6DD1322A24 /* Pods */,
@@ -231,6 +226,19 @@
 				FF5EF5D4265007F200304F63 /* UserRepository.swift */,
 			);
 			path = Repositories;
+			sourceTree = "<group>";
+		};
+		FF5EF60526503CBA00304F63 /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				FF5EF60126502CE800304F63 /* User.swift */,
+				FF5EF60226502CE800304F63 /* User+CoreDataProperties.swift */,
+				FF5EF5F5265021DB00304F63 /* Book.swift */,
+				FF5EF5F6265021DB00304F63 /* Book+CoreDataProperties.swift */,
+				FF5EF5F7265021DB00304F63 /* Video.swift */,
+				FF5EF5F8265021DB00304F63 /* Video+CoreDataProperties.swift */,
+			);
+			path = CoreData;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -364,10 +372,10 @@
 				A047B0732649B00100CB2DA2 /* AppDelegate.swift in Sources */,
 				A00D0977264ACE8900E4F4E3 /* VideoCell.swift in Sources */,
 				A047B0752649B00100CB2DA2 /* SceneDelegate.swift in Sources */,
-				FF5EF5FB265021DB00304F63 /* Book+CoreDataClass.swift in Sources */,
+				FF5EF5FB265021DB00304F63 /* Book.swift in Sources */,
 				A047B0A02649C42200CB2DA2 /* VideoModel.swift in Sources */,
-				FF5EF60326502CE800304F63 /* User+CoreDataClass.swift in Sources */,
-				FF5EF5FD265021DB00304F63 /* Video+CoreDataClass.swift in Sources */,
+				FF5EF60326502CE800304F63 /* User.swift in Sources */,
+				FF5EF5FD265021DB00304F63 /* Video.swift in Sources */,
 				A00D0968264AC79400E4F4E3 /* LoginVC.swift in Sources */,
 				A00D0965264AC79400E4F4E3 /* ProfileVC.swift in Sources */,
 				A00D096C264AC7D000E4F4E3 /* Extensions.swift in Sources */,
