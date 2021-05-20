@@ -23,6 +23,11 @@ class DetailVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let panGesture = UIPinchGestureRecognizer(target: self, action: #selector(didBookImageViewPinched(_:)))
+        bookImageView.addGestureRecognizer(panGesture)
+        bookImageView.isUserInteractionEnabled = true
+        bookImageView.isMultipleTouchEnabled = true
+        
         configureElements()
     }
     
@@ -66,6 +71,13 @@ class DetailVC: UIViewController {
     // MARK: - Handle close this view
     @IBAction func didCloseTapped(_ sender: UIButton) {
         self.dismiss(animated: true, completion: nil)
+    }
+    
+    // MARK: -
+    @objc func didBookImageViewPinched(_ sender: UIPinchGestureRecognizer) {
+        bookImageView.bringSubviewToFront(sender.view!)
+        sender.view!.transform = sender.view!.transform.scaledBy(x: sender.scale, y: sender.scale)
+        sender.scale = 1.0
     }
 }
 

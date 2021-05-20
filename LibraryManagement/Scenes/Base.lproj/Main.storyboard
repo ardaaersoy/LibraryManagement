@@ -133,6 +133,7 @@
                                                 <constraint firstItem="6wx-uK-WNW" firstAttribute="leading" secondItem="8Vo-5W-rxn" secondAttribute="leading" constant="20" id="kce-Mp-MdW"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <gestureRecognizers/>
                                         <connections>
                                             <outlet property="assetDescLabel" destination="WhZ-e0-qMW" id="8Zh-Zx-EJ1"/>
                                             <outlet property="assetSubtitleLabel" destination="87g-ZL-FVg" id="pzT-Vc-bLH"/>
@@ -467,7 +468,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="Fgf-RK-Xx2"/>
+        <segue reference="cJv-i9-OrQ"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="Login" width="270.5" height="308.5"/>

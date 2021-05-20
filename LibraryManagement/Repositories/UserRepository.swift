@@ -15,7 +15,7 @@ protocol IUserRepository {
 }
 
 class UserRepository: BaseRepository, IUserRepository {
-    
+        
     // MARK: - Insert a user to database
     func insert(username: String, password: String, completion: @escaping (Bool) -> Void) {
         guard let context = context else { return completion(false) }
